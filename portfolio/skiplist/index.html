@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>跳表解析-基础篇</title>
+<meta name="description" content="Describe your website">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://old-stick.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://old-stick.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://old-stick.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://old-stick.github.io/css/owl.theme.css">
+
+
+  <link href="https://old-stick.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://old-stick.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://old-stick.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://old-stick.github.io/">Old-Stick Blog</a></h1>
+    
+      <p class="sidebar-p">OldStick博客专栏</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://old-stick.github.io/portfolio/">Java</a></li>
+      
+        <li><a href="https://old-stick.github.io/network/">网络</a></li>
+      
+        <li><a href="https://old-stick.github.io/about/">About</a></li>
+      
+        <li><a href="https://old-stick.github.io/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  <a href="full%20page%20or%20profile%20url%20in%20facebook" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20googleplus" data-animate-hover="pulse" class="external gplus">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20twitter" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20instagram" title="" class="external instagram">
+    <i class="fa fa-instagram"></i>
+  </a>
+  
+  
+  <a href="mailto:irvingfly@163.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20linkedin" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20stackoverflow" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20github" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20youtube" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+  <a href="wa.me%20service%20link" data-animate-hover="pulse" class="external">
+    <i class="fa fa-whatsapp"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2019 old-stick Zhang |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h3 class="small-navbar-heading"><a href="https://old-stick.github.io/">Old-Stick Blog</a></h3>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h3>跳表解析-基础篇</h3>
+         <p>  跳表是一个随机化的数据结构，实质就是一种可以进行二分查找的有序链表。跳表在原有的有序链表上面增加了多级索引，通过索引来实现快速查找。跳表不仅能提高搜索性能，同时也可以提高插入和删除操作的性能。</p>
+<h4 id="heading">跳表用途</h4>
+<p>  平衡树可以用于表示抽象的数据类型如字典和有序链表，它通过树旋转（Tree Rotation）操作强制使树结构保持平衡来保证节点搜索的效率。在数据为随机插入的情况下，平衡树性能表现良好；但数据为顺序插入或者需要删除节点的情况下，平衡树的性能就会有些糟糕。但是在并发场景下，平衡树由于需要旋转自平衡，因此在并发环境下性能和伸缩性并不好；<br>
+  跳表可以作为平衡树的一种替代选择。它使用随机的平衡策略取代平衡树严格的强制的树平衡策略。因此它具有更简单有效的插入/删除方法以及更快的搜索速度，在并发场景下，跳表相对来说更加适用。</p>
+<h4 id="heading-1">跳表详解</h4>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imglink.jpg" alt=""></p>
+<p>  对于一个单链表来说，即使链表中的数据是有序的，如果我们想要查找某个数据，也必须从头到尾的遍历链表，很显然这种查找效率是十分低效的，时间复杂度为O(n)。</p>
+<p><strong>跳表的演进</strong><br>
+  我们可以对链表建立一级“索引”，每两个结点提取一个结点到上一级，我们把抽取出来的那一级叫做索引或者索引层，如下图所示，down表示down指针。</p>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgskplist2.jpg" alt=""></p>
+<p>比如现在我们需要查找11这个元素，相对于有序链表是不是有了根快的查询速度！<br>
+同样地，一级索引也可以往上再提取一层，组成二级索引，如下：</p>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgskplist3.jpg" alt=""></p>
+<p>这时候我们再查找11这个元素只需要经过1、9、11这几个元素就可以找到了。这基本上就是跳表的核心思想，其实这也是一个“空间换时间”的算法，通过向上提取索引增加了查找的效率。</p>
+<p><strong>跳表的插入</strong><br>
+  上边所讲的是跳表的查询，那对于跳表，我们应该如何插入一个元素？<br>
+eg:我们添加一个值为10的节点，首先我们会先根据一个随机算法获取到一个索引等级，这里比如level=2，然后找到10这个节点在下边两层对应的 <strong>前置节点</strong>，在其后边进行插入操作，如下图：</p>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgskiplist4.jpg" alt=""></p>
+<p><strong>跳表的删除</strong><br>
+eg:删除元素5，具体操作如下图：</p>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgskiplist-remove.jpg" alt=""></p>
+<p><strong>标准化跳表</strong></p>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgskiplist-mode.png" alt=""></p>
+<p>可以看到，上一级元素的个数是下一级的一半，这样每次减少一半，就很接近平衡二叉树了</p>
+<h4 id="heading-2">时间复杂度</h4>
+<p>  <strong>单链表查询的时间复杂度为O(n)，而插入、删除操作需要先找到对应的位置，所以插入、删除的时间复杂度也是O(n)</strong><br>
+  假设链表有n个结点，按照标准跳表结构，每两个结点都会抽出一个结点作为上一级索引的结点。</p>
+<p>第一级索引的个数大约就是n/2, <br>
+第二级的索引大约就是n/4, <br>
+第三级的索引就是n/8, <br>
+依次类推，也就是说，第k级索引的结点个数是第k-1级索引的结点个数的1/2，那么第k级的索引结点个数为：<strong>n/2<!-- raw HTML omitted -->k<!-- raw HTML omitted --></strong></p>
+<p>  假设索引有h级，最高级的索引有2个结点，通过上面的公式，我们可以得到，从而可得：<strong>h =log<!-- raw HTML omitted -->2<!-- raw HTML omitted -->n-1</strong> 。如果包含原始链表这一层，整个跳表的高度就是。我们在跳表中查找某个数据的时候，如果每一层都要遍历m个结点，那么在跳表中查询一个数据的时间复杂度就为：<strong>O(m*logn)</strong>。</p>
+<h4 id="heading-3">空间复杂度</h4>
+<p>  比起单纯的单链表，跳表就需要额外的存储空间去存储多级索引。假设原始链表的大小为n，那么第一级索引大约有n/2个结点，第二级索引大约有4/n个结点，依次类推，每上升一级索引结点的个数就减少一半，直到剩下最后2个结点，如下图所示，其实就是一个等比数列。
+<img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgskiplist-kongjian1.png" alt=""></p>
+<p>这几级索引结点总和为：<strong>n/2 + n/4 + n/8 + &hellip; + 8 + 4 + 2 = n - 2</strong>。也就是说如果将包含n个结点的单链表构造成跳表，我们需要额外再用接近n个结点的存储空间。所以，<strong>跳表的空间复杂度为O(n)</strong></p>
+<p><strong>降低跳表空间复杂度：</strong><br>
+  如果我们想要降低跳表的空间复杂度，可以将索引节点抽取的距离增大，上边的我们是按照标准的两个几点抽取一个节点作为上层索引，比如我们改成三个节点抽取一个节点作为上层索引:<br>
+<img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgskiplost-kongjian2.png" alt=""></p>
+<p>通过等比数列的求和公式，总的索引结点大约是：n/3 + n /9 + n/27 + &hellip; + 9 + 3 + 1 = n/2。尽管空间复杂度还是O(n)，但是比之前的每两个结点抽一个结点的索引构建方法，可以减少了一半的索引结点存储空间。<br>
+  实际上，在软件开发中，我们不必太在意索引占用的额外空间。在讲数据结构的时候，我们习惯性地把要处理的数据看成整数，但是在实际的软件开发中，原始链表中存储的有可能是很大的对象，而索引结点只需要存储关键值和几个指针，并不需要存储对象，所以当对象比索引结点大很多时，那索引占用的额外空间就可以忽略了。</p>
+<h4 id="heading-4">跳表索引的动态更新</h4>
+<p>  当我们不断地往跳表中插入数据时，我们如果不更新索引，就有可能出现某2个索引节点之间的数据非常多的情况，在极端情况下，跳表还会退化成单链表。<br>
+  作为一种动态数据结构，我们需要某种手段来维护索引与原始链表大小之间的平衡，也就是说，如果链表中的结点多了，索引结点就相应地增加一些，避免复杂度退化，以及查找、插入和删除操作性能的下降。<br>
+  如果你了解红黑树、AVL树这样的平衡二叉树，你就会知道它们是通过左右旋的方式保持左右子树的大小平衡，而跳表是通过随机函数来维护“平衡性”。<br>
+  当我们往跳表中插入数据的时候，我们可以通过一个 <strong>随机函数</strong>，来决定这个结点插入到哪几级索引层中，比如随机函数生成了值K，那我们就将这个结点添加到第一级到第K级这个K级索引中。随机函数的选择是非常有讲究的，从概率上讲，能够保证跳表的索引大小和数据大小平衡性，不至于性能的过度退化。</p>
+<h4 id="heading-5">跳表的性质</h4>
+<pre><code>(1) 由多层索引组成，level是通过一定的概率随机产生的；
+(2) 每一层都是一个有序的链表，默认是升序；
+(3) 最底层的链表包含所有元素；
+(4) 如果一个元素出现在Level i 的链表中，则它在Level i 之下的链表也都会出现； 
+(5) 每个索引节点包含两个指针，一个向下，一个向右；
+(6) 跳表查询、插入、删除的时间复杂度为O(log n)，与平衡二叉树接近；
+</code></pre><p><strong>引用文献：</strong><br>
+1.<a href="https://mp.weixin.qq.com/s/wacN04NHN2Zm0mZIlftxaw">拜托，面试别再问我跳表了！</a><br>
+2.<a href="https://blog.csdn.net/pcwl1206/article/details/83512600">【数据结构与算法】之跳表（Java实现）&mdash;第九篇</a></p>
+         
+      </div>
+    </div>
+  </div>
+  <div class="post-comment">
+    
+    
+
+<script type="text/javascript" src="https://old-stick.github.io/js/md5.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+ <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+    var gitalk = new Gitalk({
+        id: md5(window.location.pathname),	
+        clientID: '8fb7c3cc9b75ec2e6a77',
+        clientSecret: 'acc5d214fd7da827f9a617c7a580fe27501dc506',
+        repo: 'old-stick.github.io',	
+        owner: 'Old-Stick',	
+        admin: 'Old-Stick',
+        perPage:  50 ,
+        repository : 'old-stick.github.io'
+    })
+    gitalk.render('gitalk-container');
+</script>
+</div>
+
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://old-stick.github.io/js/jquery.min.js"></script>
+<script src="https://old-stick.github.io/js/bootstrap.min.js"></script>
+<script src="https://old-stick.github.io/js/jquery.cookie.js"> </script>
+<script src="https://old-stick.github.io/js/ekko-lightbox.js"></script>
+<script src="https://old-stick.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://old-stick.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://old-stick.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://old-stick.github.io/js/owl.carousel.min.js"></script>
+<script src="https://old-stick.github.io/js/front.js"></script>
+
+
+</body>
+</html>

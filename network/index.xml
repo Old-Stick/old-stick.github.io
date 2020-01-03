@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networks on Old-Stick Blog</title>
+    <link>https://old-stick.github.io/network/</link>
+    <description>Recent content in Networks on Old-Stick Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Oct 2019 11:58:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://old-stick.github.io/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Charles抓包工具</title>
+      <link>https://old-stick.github.io/network/charles/</link>
+      <pubDate>Tue, 22 Oct 2019 11:58:32 +0800</pubDate>
+      
+      <guid>https://old-stick.github.io/network/charles/</guid>
+      <description>&lt;p&gt;  Charles是在 Mac 下常用的网络封包截取工具,在做 移动开发时,我们为了调试与服务器端的网络通讯协议,常常需要截取网络封包来分析。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Charles抓包工具</title>
+<meta name="description" content="Describe your website">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://old-stick.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://old-stick.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://old-stick.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://old-stick.github.io/css/owl.theme.css">
+
+
+  <link href="https://old-stick.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://old-stick.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://old-stick.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://old-stick.github.io/">Old-Stick Blog</a></h1>
+    
+      <p class="sidebar-p">OldStick博客专栏</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://old-stick.github.io/portfolio/">Java</a></li>
+      
+        <li><a href="https://old-stick.github.io/network/">网络</a></li>
+      
+        <li><a href="https://old-stick.github.io/about/">About</a></li>
+      
+        <li><a href="https://old-stick.github.io/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  <a href="full%20page%20or%20profile%20url%20in%20facebook" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20googleplus" data-animate-hover="pulse" class="external gplus">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20twitter" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20instagram" title="" class="external instagram">
+    <i class="fa fa-instagram"></i>
+  </a>
+  
+  
+  <a href="mailto:irvingfly@163.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20linkedin" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20stackoverflow" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20github" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20youtube" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+  <a href="wa.me%20service%20link" data-animate-hover="pulse" class="external">
+    <i class="fa fa-whatsapp"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2019 old-stick Zhang |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h3 class="small-navbar-heading"><a href="https://old-stick.github.io/">Old-Stick Blog</a></h3>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h3>Charles抓包工具</h3>
+         <p>  Charles是在 Mac 下常用的网络封包截取工具,在做 移动开发时,我们为了调试与服务器端的网络通讯协议,常常需要截取网络封包来分析。</p>
+<p>  Charles 通过将自己设置成系统的网络访问代理服务器,使得所有的网络访问请求都通过它来完成,从而实现了网络封包的截取和分析。除了在做移动开发中调试端口外,Charles 也可以用于分析第三方应用的通讯协议。配合 Charles 的 SSL 功能,Charles 还可以分析 Https 协议。</p>
+<h4 id="charles">Charles主要功能</h4>
+<ul>
+<li>截取 Http 和 Https 网络封包。</li>
+<li>支持重发网络请求,方便后端调试。</li>
+<li>支持修改网络请求参数。</li>
+<li>支持网络请求的截获并动态修改。</li>
+<li>支持模拟慢速网络。</li>
+</ul>
+<h4 id="heading">下载与安装</h4>
+<p> 1.下载安装
+  链接:<strong><a href="https://pan.baidu.com/s/1qHsAqmz4o_puCgFgljhA4w">https://pan.baidu.com/s/1qHsAqmz4o_puCgFgljhA4w</a>  密码:q49f</strong>,把对应的jar包进行替换就可以破解 （mac地址：/ApplicationsCharles.app/Contents/Java ）</p>
+<p> 2.当然能下载到官网的最好
+  <strong><a href="https://www.charlesproxy.com/download/">https://www.charlesproxy.com/download/</a></strong></p>
+<p> 3.关于安装
+  将Charles设置成系统代理：Charles是通过将自己设置成代理服务器来完成封包截取的,所以使用Charles的第一步是将其设置成系统的代理服务器,,之后,你就可以看到源源不断的网络请求出现在 Charles 的界面中。</p>
+<pre><code>Charles 主要提供两种查看封包的视图: Structure 、Sequence
+Structure:将网络请求按访问的域名分类
+Sequence:将网络请求按访问的时间排序
+</code></pre>
+<h4 id="heading-1">过滤网络请求</h4>
+<ul>
+<li>方法一:在主界面的中部的 Filter 栏中填入需要过滤出来的关键字。例如我们的服务器的地址是：<strong><a href="http://yuantiku.com">http://yuantiku.com</a></strong>, 那么只需要在 Filter 栏中填入 yuantiku 即可。</li>
+<li>方法二:在 Charles 的菜单栏选择 “Proxy”–&gt;“Recording Settings-&gt;Include-&gt;Add”,然后选择 Include 栏,选择添加一个项目,然后填入需要监控的协议,主机地址,端口号。这样就可以只截取目标网站的封包了</li>
+<li>方法三:在想过滤的网络请求上右击,选择 “Focus”,之后在 Filter 一栏勾选上 Focussed 一项</li>
+</ul>
+<h4 id="heading-2">截取手机上的网络封包</h4>
+<p> 1.要截取 iPhone 上的网络请求,我们首先需要将 Charles 的代理功能打开。在Charles的菜单栏上选择 “Proxy”–&gt;“Proxy Settings”,填入代理端口 8888,并且勾上“Enable transparent HTTP proxying”就完成了在Charles上的设置
+ 2. Charles 的顶部菜单的 “Help”–&gt;“Local IP Address”,即可在弹出的对话框中看到 IP 地址
+ 3.手机上设置：将手机wifi 代理配置为手动,输入代理端口号8888 以及代理服务器 本机地址
+ 4.设置好之后,我们打开 iPhone 上的任意需要网络通讯的程序,就可以看到 Charles 弹出 iPhone 请求连接的确认菜单,点击“Allow” 即可完成设置。</p>
+<h4 id="heading-3">截取手机上的网络封包</h4>
+<p>   <strong>安装证书:如果你需要截取分析 Https 协议相关的内容。那么需要安装 Charles 的CA证书:</strong>
+  1.首先我们需要在 Mac 电脑上安装证书。点击Charles的顶部菜单,选择 “Help” –&gt;“SSL Proxying” –&gt; “Install Charles Root Certificate”,然后输入系统的帐号密码,即可在KeyChain看到添加好的证书
+  2.需要注意的是,即使是安装完证书之后,Charles 默认也并不截取 Https 网络通讯的信息,如果你想对截取某个网站上的所有 Https网络请求,可以在该请求上右击,选择SSL proxy</p>
+<h4 id="heading-4">模拟慢速网络</h4>
+<p>  在做移动开发的时候,我们常常需要模拟慢速网络或者高延迟的网络,以测试在移动网络下,应用的表现是否正常。Charles对此需求提供了很好的支持。
+  在Charles的菜单上,选择 “Proxy”–&gt;“Throttle Setting” 项,在之后弹出的对话框中,我们可以勾选上 “Enable Throttling”,并且可以设置 Throttle Preset 的类型,如果我们只想模拟指定网站的慢速网络,可以再勾选 “Only for selected hosts” 项,然后在对话框的下半部分设置中增加指定的hosts项即可</p>
+<h4 id="heading-5">修改网络请求内容</h4>
+<pre><code>如下图：选中想要修改的请求url，点击右上角编辑图标，进行编辑，最后点击Execute执行。
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgcharles1.png" alt=""></p>
+<h4 id="heading-6">给服务器做压力测试</h4>
+<p>  我们可以使用Charles的Repeat功能来简单地测试服务器的并发处理能力，我们在想打压的网络请求上(POST或GET请求均可)右击,然后选择「Repeat Advanced」菜单项，如下所示:
+<!-- raw HTML omitted --></p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgcharles3.jpg" alt=""></p>
+<h4 id="heading-7">修改服务器返回内容</h4>
+<p>  Charles 提供了 Map 功能、 Rewrite 功能以及 Breakpoints 功能，都可以达到修改服务器返回内容的目的。这三者在功能上的差异是:
+  1. Map 功能适合长期地将某一些请求重定向到另一个网络地址或本地文件。
+  2. Rewrite 功能适合对网络请求进行一些正则替换。
+  3. Breakpoints 功能适合做一些临时性的修改。
+Map:
+  在 Charles 的菜单中，选择 “Tools”–&gt;“Map Remote” 或 “Map Local” 即可进入到相应功能的设置页面:
+<img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgcharles4.jpg" alt="">
+  对于Map Local功能,我们需要填写的重定向的源地址和本地的目标文件。对于有一些复杂的网络请求结果，我们可以先使用Charles提供的Save Response,将请求结果保存到本地，然后进行修改，成为我们的目标映射文件。</p>
+<p>Rewrite:
+  适合对某一类网络请求做一些正则替换，达到修改结果的目的，比较适合做批量和长期替换
+<img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgcharles5.jpg" alt=""></p>
+<p>Breakpoints:
+  很多适合我们需要做一些临时的修改，对一次网络请求进行结果修改，Breakpoints功能类似设置断点，当指定请求发生时，Charles会截获该请求，这个适合我们可以在Charles中临时修改请求返回的内容。注意要避免暂停时间过长而导致请求超时或者关闭。</p>
+<p>乱码解决:
+  1.打开Charles,上方菜单栏-&gt;Help-&gt;SSL Proxying-&gt;Install Charles Root Certificate,搜索Charles Proxy CA，修改为始终信任。
+<img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgcharles5.jpeg" alt=""></p>
+<p>  2. Proxy-&gt;SSL Proxy Settings-&gt;Add</p>
+<p><img src="https://raw.githubusercontent.com/Old-Stick/old-stick-resource/master/old-stick/resource/imgcharles7.jpeg" alt=""></p>
+         
+      </div>
+    </div>
+  </div>
+  <div class="post-comment">
+    
+    
+
+<script type="text/javascript" src="https://old-stick.github.io/js/md5.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+ <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+    var gitalk = new Gitalk({
+        id: md5(window.location.pathname),	
+        clientID: '8fb7c3cc9b75ec2e6a77',
+        clientSecret: 'acc5d214fd7da827f9a617c7a580fe27501dc506',
+        repo: 'old-stick.github.io',	
+        owner: 'Old-Stick',	
+        admin: 'Old-Stick',
+        perPage:  50 ,
+        repository : 'old-stick.github.io'
+    })
+    gitalk.render('gitalk-container');
+</script>
+</div>
+
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://old-stick.github.io/js/jquery.min.js"></script>
+<script src="https://old-stick.github.io/js/bootstrap.min.js"></script>
+<script src="https://old-stick.github.io/js/jquery.cookie.js"> </script>
+<script src="https://old-stick.github.io/js/ekko-lightbox.js"></script>
+<script src="https://old-stick.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://old-stick.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://old-stick.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://old-stick.github.io/js/owl.carousel.min.js"></script>
+<script src="https://old-stick.github.io/js/front.js"></script>
+
+
+</body>
+</html>
